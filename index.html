@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Namaste!!!</title>
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.setVolume(100); // Set volume to 100%
+            event.target.playVideo();  // Attempt autoplay with sound
+        }
+
+        // Ensure autoplay works after user interaction
+        document.addEventListener('click', function () {
+            if (player && player.getPlayerState() !== 1) {
+                player.playVideo();
+            }
+        });
+    </script>
     <style>
         body {
             display: flex;
@@ -12,18 +34,20 @@
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
+            cursor: pointer; /* Indicates interactivity */
         }
         .video-container {
             text-align: center;
         }
     </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <div class="video-container">
-        <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=q8VqQ7LWy_zSNlhH" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        <iframe id="yt-player" width="560" height="315"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
     </div>

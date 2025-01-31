@@ -13,7 +13,6 @@
                 }
             });
         }
-
         function onPlayerReady(event) {
             event.target.unMute();
             event.target.setVolume(100);
@@ -22,15 +21,15 @@
     </script>
     <style>
         body {
+            margin: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             font-family: 'Comic Sans MS', cursive;
-            overflow-x: hidden;
+            overflow: hidden;
         }
         .procrastination-notice {
             font-size: 2em;
@@ -46,7 +45,6 @@
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
             max-width: 960px;
             width: 90%;
             margin-bottom: 80px;
@@ -57,35 +55,11 @@
             height: auto;
             aspect-ratio: 16/9;
         }
-        .walking-cat {
+        .cat {
+            font-size: 4rem;
             position: absolute;
-            bottom: 20px;
-            left: -100px;
-            font-size: 3rem;
-            animation: walk 12s linear infinite;
+            transition: transform 0.3s ease;
         }
-
-        @keyframes walk {
-            0% {
-                transform: translateX(-100%) scaleX(1);
-                left: -100px;
-            }
-            49% {
-                transform: scaleX(1);
-            }
-            50% {
-                left: 100%;
-                transform: translateX(0%) scaleX(-1);
-            }
-            99% {
-                transform: scaleX(-1);
-            }
-            100% {
-                left: -100px;
-                transform: translateX(-100%) scaleX(1);
-            }
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 0.9; transform: translateY(0); }
@@ -107,16 +81,35 @@
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
     </div>
-    <div class="walking-cat">🐈</div>
-
+    <div class="cat">🐈</div>
     <script>
-        // Add walking animation steps
-        const cat = document.querySelector('.walking-cat');
-        let frame = 0;
-        setInterval(() => {
-            frame = (frame + 1) % 4;
-            cat.style.transform = `translateY(${frame % 2 === 0 ? '-2' : '2'}px) ${getComputedStyle(cat).transform}`;
-        }, 200);
+        const cat = document.querySelector('.cat');
+        
+        document.addEventListener('mousemove', (e) => {
+            const catRect = cat.getBoundingClientRect();
+            const catCenterX = catRect.left + catRect.width / 2;
+            const catCenterY = catRect.top + catRect.height / 2;
+            
+            const distance = Math.sqrt(
+                Math.pow(e.clientX - catCenterX, 2) + 
+                Math.pow(e.clientY - catCenterY, 2)
+            );
+            
+            if (distance < 300) {
+                const angle = Math.atan2(
+                    e.clientY - catCenterY, 
+                    e.clientX - catCenterX
+                );
+                
+                const runDistance = 400 - distance;
+                cat.style.transform = `translate(
+                    ${-Math.cos(angle) * runDistance}px, 
+                    ${-Math.sin(angle) * runDistance}px
+                )`;
+            } else {
+                cat.style.transform = 'translate(0, 0)';
+            }
+        });
     </script>
 </body>
 </html>

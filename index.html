@@ -23,11 +23,22 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Comic Sans MS', cursive;
+        }
+        .procrastination-notice {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in, bounce 2s infinite;
         }
         .video-container {
             padding: 20px;
@@ -35,19 +46,37 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
+            max-width: 960px;
+            width: 90%;
         }
         .video-container:hover {
             transform: scale(1.02);
         }
         iframe {
             border-radius: 8px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 0.9; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
+    <div class="procrastination-notice">
+        🚧 Portfolio Under Construction 🚧<br>
+        (Will be released when I stop procrastinating...<br>
+        or when hell freezes over. Whichever comes first)
+    </div>
     <div class="video-container">
-        <iframe id="yt-player" width="960" height="540"
+        <iframe id="yt-player" 
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1&mute=1"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

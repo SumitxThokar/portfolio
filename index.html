@@ -32,14 +32,17 @@
             overflow: hidden;
         }
         .procrastination-notice {
-            font-size: 2em;
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: fadeIn 1.5s ease-in;
-        }
+        font-size: 1.5em; /* Reduced from 2em */
+        line-height: 1.4;
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px; /* Reduced from 30px */
+        padding: 10px 20px; /* Added padding */
+        opacity: 0.9;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        animation: fadeIn 1.5s ease-in;
+        max-width: 90%; /* Added max-width */
+    }
         .video-container {
             padding: 20px;
             background: white;
@@ -69,10 +72,10 @@
 </head>
 <body>
     <div class="procrastination-notice">
-        🚧 Portfolio Under Construction 🚧<br>
-        (Will be released when I stop procrastinating...<br>
-        or when hell freezes over. Whichever comes first)
-    </div>
+    🚧 Portfolio Under Construction 🚧
+    <span style="display: block;">(Will be released when I stop procrastinating...</span>
+    <span style="display: block;">or when hell freezes over. Whichever comes first)</span>
+</div>
     <div class="video-container">
         <iframe id="yt-player" 
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1&mute=1"

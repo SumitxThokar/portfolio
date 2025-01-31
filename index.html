@@ -15,37 +15,40 @@
         }
 
         function onPlayerReady(event) {
-            event.target.setVolume(100); // Set volume to 100%
-            event.target.playVideo();  // Attempt autoplay with sound
+            event.target.unMute();
+            event.target.setVolume(100);
+            event.target.playVideo();
         }
-
-        // Ensure autoplay works after user interaction
-        document.addEventListener('click', function () {
-            if (player && player.getPlayerState() !== 1) {
-                player.playVideo();
-            }
-        });
     </script>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
-            cursor: pointer; /* Indicates interactivity */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         .video-container {
-            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .video-container:hover {
+            transform: scale(1.02);
+        }
+        iframe {
+            border-radius: 8px;
         }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <div class="video-container">
-        <iframe id="yt-player" width="560" height="315"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1"
+        <iframe id="yt-player" width="960" height="540"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1&mute=1"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>

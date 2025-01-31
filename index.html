@@ -68,8 +68,8 @@
             transition: transform 0.3s ease;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(420px); }
-            to { opacity: 0.9; transform: translateY(180px); }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 0.9; transform: translateY(0px); }
         }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
@@ -114,7 +114,7 @@
                     ${-Math.sin(angle) * runDistance}px
                 )`;
             } else {
-                cat.style.transform = 'translate(0, 0)';
+                cat.style.transform = 'translate(420, 180)';
             }
         });
     </script>

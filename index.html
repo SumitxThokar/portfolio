@@ -21,16 +21,18 @@
     </script>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            font-family: 'Comic Sans MS', cursive;
-            overflow: hidden;
-        }
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Moves content lower */
+    align-items: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Comic Sans MS', cursive;
+    overflow: hidden;
+    padding-top: 50px; /* Extra spacing from the top */
+}
+
         .procrastination-notice {
     font-size: 1.5em;
     line-height: 1.4;
@@ -44,7 +46,6 @@
     animation: fadeIn 1.5s ease-in;
     max-width: 90%;
 }
-
 
         .video-container {
             padding: 20px;

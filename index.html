@@ -21,60 +21,79 @@
         }
     </script>
     <style>
-        /* ... (keep previous styles) ... */
-
-        .dancing-cat {
-            position: fixed;
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Comic Sans MS', cursive;
+            overflow-x: hidden;
+        }
+        .procrastination-notice {
+            font-size: 2em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in;
+        }
+        .video-container {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            max-width: 960px;
+            width: 90%;
+            margin-bottom: 80px;
+        }
+        iframe {
+            border-radius: 8px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/9;
+        }
+        .walking-cat {
+            position: absolute;
+            bottom: 20px;
+            left: -100px;
             font-size: 3rem;
-            pointer-events: none;
-            animation: dance 4s infinite linear;
-            z-index: 1000;
-            filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.5));
+            animation: walk 12s linear infinite;
         }
 
-        @keyframes dance {
-            0% { 
-                transform: translateX(0) translateY(0) rotate(0deg);
-                opacity: 1;
+        @keyframes walk {
+            0% {
+                transform: translateX(-100%) scaleX(1);
+                left: -100px;
             }
-            25% {
-                transform: translateX(100vw) translateY(50vh) rotate(360deg);
-                opacity: 0.8;
+            49% {
+                transform: scaleX(1);
             }
             50% {
-                transform: translateX(50vw) translateY(100vh) rotate(720deg);
-                opacity: 1;
+                left: 100%;
+                transform: translateX(0%) scaleX(-1);
             }
-            75% {
-                transform: translateX(-20vw) translateY(70vh) rotate(1080deg);
-                opacity: 0.8;
+            99% {
+                transform: scaleX(-1);
             }
             100% {
-                transform: translateX(0) translateY(0) rotate(1440deg);
-                opacity: 1;
+                left: -100px;
+                transform: translateX(-100%) scaleX(1);
             }
         }
 
-        /* Add floating cats */
-        .cat-container {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            top: 0;
-            left: 0;
-        }
-
-        /* Make video container appear above cats */
-        .video-container {
-            position: relative;
-            z-index: 1001;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 0.9; transform: translateY(0); }
         }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-    <div class="cat-container" id="catContainer"></div>
     <div class="procrastination-notice">
         🚧 Portfolio Under Construction 🚧<br>
         (Will be released when I stop procrastinating...<br>
@@ -88,58 +107,16 @@
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
         </iframe>
     </div>
+    <div class="walking-cat">🐈</div>
 
     <script>
-        // Add multiple dancing cats
-        const catContainer = document.getElementById('catContainer');
-        const catEmojis = ['🐱', '🐈', '😹', '🙀', '😾'];
-        
-        function createCat() {
-            const cat = document.createElement('div');
-            cat.className = 'dancing-cat';
-            cat.textContent = catEmojis[Math.floor(Math.random() * catEmojis.length)];
-            
-            // Random animation properties
-            const duration = 3 + Math.random() * 3;
-            const delay = Math.random() * 5;
-            cat.style.animation = `dance ${duration}s infinite ${delay}s linear`;
-            
-            // Random size
-            cat.style.fontSize = (2 + Math.random() * 3) + 'rem';
-            
-            catContainer.appendChild(cat);
-            
-            // Remove cat after animation completes
-            setTimeout(() => cat.remove(), duration * 1000 + 500);
-        }
-
-        // Create new cat every 2 seconds
-        setInterval(createCat, 2000);
-        
-        // Initial cats
-        for(let i = 0; i < 3; i++) {
-            setTimeout(createCat, i * 500);
-        }
-
-        // Make cats interactive
-        document.addEventListener('mousemove', (e) => {
-            const cats = document.getElementsByClassName('dancing-cat');
-            Array.from(cats).forEach(cat => {
-                const rect = cat.getBoundingClientRect();
-                const distance = Math.hypot(
-                    e.clientX - rect.left - rect.width/2,
-                    e.clientY - rect.top - rect.height/2
-                );
-                
-                if(distance < 50) {
-                    cat.style.transform = `scale(1.5) rotate(${Math.random() * 360}deg)`;
-                    cat.style.transition = 'transform 0.3s ease';
-                } else {
-                    cat.style.transform = '';
-                    cat.style.transition = 'transform 0.6s ease';
-                }
-            });
-        });
+        // Add walking animation steps
+        const cat = document.querySelector('.walking-cat');
+        let frame = 0;
+        setInterval(() => {
+            frame = (frame + 1) % 4;
+            cat.style.transform = `translateY(${frame % 2 === 0 ? '-2' : '2'}px) ${getComputedStyle(cat).transform}`;
+        }, 200);
     </script>
 </body>
 </html>

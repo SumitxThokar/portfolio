@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namaste!!!</title>
+    <title>Namaste Cutie!!!</title>
     <script>
         var player;
         function onYouTubeIframeAPIReady() {
@@ -21,31 +21,34 @@
     </script>
     <style>
         body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Moves content lower */
-    align-items: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    font-family: 'Comic Sans MS', cursive;
-    overflow: hidden;
-    padding-top: 20px; /* Extra spacing from the top */
-}
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            background: linear-gradient(135deg, #f9d6e4 0%, #f5b8d1 100%);
+            font-family: 'Comic Sans MS', cursive;
+            overflow: hidden;
+            padding-top: 20px;
+        }
 
         .procrastination-notice {
-    font-size: 1.5em;
-    line-height: 1.4;
-    color: #333;
-    text-align: center;
-    margin-top: 100px; /* Increased margin-top */
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    opacity: 0.9;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    animation: fadeIn 1.5s ease-in;
-    max-width: 90%;
-}
+            font-size: 1.5em;
+            line-height: 1.4;
+            color: #5a3a5a;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in;
+            max-width: 90%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
 
         .video-container {
             padding: 20px;
@@ -56,30 +59,46 @@
             width: 90%;
             margin-bottom: 80px;
         }
+
         iframe {
             border-radius: 8px;
             width: 100%;
             height: auto;
             aspect-ratio: 16/9;
         }
+
         .cat {
             font-size: 4rem;
             position: absolute;
             transition: transform 0.3s ease;
         }
+
+        .cute-gif {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            animation: float 5s ease-in-out infinite;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 0.9; transform: translateY(0px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
     </style>
     <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
     <div class="procrastination-notice">
-    🚧 Portfolio Under Construction 🚧
-    <span style="display: block;">(Will be released when I stop procrastinating...</span>
-    <span style="display: block;">or when hell freezes over. Whichever comes first)</span>
-</div>
+        🎀✨ Portfolio Under Construction ✨🎀
+        <span style="display: block;">(Will be released when I stop procrastinating...</span>
+        <span style="display: block;">or when hell freezes over. Whichever comes first!)</span>
+    </div>
     <div class="video-container">
         <iframe id="yt-player" 
             src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1&mute=1"
@@ -89,6 +108,10 @@
         </iframe>
     </div>
     <div class="cat">🐈</div>
+    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" class="cute-gif" style="top: 10%; left: 5%;">
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" class="cute-gif" style="top: 20%; right: 10%;">
+    <img src="https://media.giphy.com/media/l0HlTy9x8FZo0XO1i/giphy.gif" class="cute-gif" style="bottom: 15%; left: 15%;">
+    <img src="https://media.giphy.com/media/3o7TKsQ8gqVlz4LmDe/giphy.gif" class="cute-gif" style="bottom: 5%; right: 5%;">
     <script>
         const cat = document.querySelector('.cat');
         

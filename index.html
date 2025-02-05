@@ -3,9 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namaste Cutie!!!</title>
+    <title>✨ Secret Calculator Proposal ✨</title>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffe6f0;
+            font-family: 'Comic Sans MS', cursive;
+            overflow: hidden;
+            padding-top: 50px;
+        }
+
+        .construction-notice {
+            font-size: 1.5em;
+            color: #ff69b4;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(255,105,180,0.2);
+        }
+
+        .calculator {
+            background: #fff;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+            width: 300px;
+            margin-bottom: 30px;
+        }
+
+        #display {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 15px;
+            text-align: right;
+            font-size: 2em;
+            border: 3px solid #ffb3d9;
+            border-radius: 15px;
+            padding: 10px;
+            color: #ff69b4;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 15px;
+            background: #ffb3d9;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff69b4;
+            transform: scale(1.05);
+        }
+
+        .equals {
+            background: #ff69b4;
+            grid-column: span 2;
+        }
+
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.2);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-notice">
+        🚧 Portfolio Under Construction 🚧<br>
+        (Solve the mystery equation to unlock it!)
+    </div>
+
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="calculate()" class="equals">=</button>
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+    <div class="video-container">
+        <iframe id="yt-player" 
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&mute=1"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+    </div>
+
     <script>
-        var player;
+        let player;
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('yt-player', {
                 events: {
@@ -13,133 +146,34 @@
                 }
             });
         }
+
         function onPlayerReady(event) {
             event.target.unMute();
             event.target.setVolume(100);
-            event.target.playVideo();
-        }
-    </script>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            background: linear-gradient(135deg, #f9d6e4 0%, #f5b8d1 100%);
-            font-family: 'Comic Sans MS', cursive;
-            overflow: hidden;
-            padding-top: 20px;
         }
 
-        .procrastination-notice {
-            font-size: 1.5em;
-            line-height: 1.4;
-            color: #5a3a5a;
-            text-align: center;
-            margin-top: 100px;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            opacity: 0.9;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: fadeIn 1.5s ease-in;
-            max-width: 90%;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .video-container {
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            max-width: 960px;
-            width: 90%;
-            margin-bottom: 80px;
-        }
-
-        iframe {
-            border-radius: 8px;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16/9;
-        }
-
-        .cat {
-            font-size: 4rem;
-            position: absolute;
-            transition: transform 0.3s ease;
-        }
-
-        .cute-gif {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            pointer-events: none;
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 0.9; transform: translateY(0px); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-    </style>
-    <script src="https://www.youtube.com/iframe_api"></script>
-</head>
-<body>
-    <div class="procrastination-notice">
-        🎀✨ Portfolio Under Construction ✨🎀
-        <span style="display: block;">(Will be released when I stop procrastinating...</span>
-        <span style="display: block;">or when hell freezes over. Whichever comes first!)</span>
-    </div>
-    <div class="video-container">
-        <iframe id="yt-player" 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&autoplay=1&mute=1"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-        </iframe>
-    </div>
-    <div class="cat">🐈</div>
-    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" class="cute-gif" style="top: 10%; left: 5%;">
-    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" class="cute-gif" style="top: 20%; right: 10%;">
-    <img src="https://media.giphy.com/media/l0HlTy9x8FZo0XO1i/giphy.gif" class="cute-gif" style="bottom: 15%; left: 15%;">
-    <img src="https://media.giphy.com/media/3o7TKsQ8gqVlz4LmDe/giphy.gif" class="cute-gif" style="bottom: 5%; right: 5%;">
-    <script>
-        const cat = document.querySelector('.cat');
+        let display = document.getElementById('display');
         
-        document.addEventListener('mousemove', (e) => {
-            const catRect = cat.getBoundingClientRect();
-            const catCenterX = catRect.left + catRect.width / 2;
-            const catCenterY = catRect.top + catRect.height / 2;
-            
-            const distance = Math.sqrt(
-                Math.pow(e.clientX - catCenterX, 2) + 
-                Math.pow(e.clientY - catCenterY, 2)
-            );
-            
-            if (distance < 300) {
-                const angle = Math.atan2(
-                    e.clientY - catCenterY, 
-                    e.clientX - catCenterX
-                );
-                
-                const runDistance = 400 - distance;
-                cat.style.transform = `translate(
-                    ${-Math.cos(angle) * runDistance}px, 
-                    ${-Math.sin(angle) * runDistance}px
-                )`;
-            } else {
-                cat.style.transform = 'translate(420, 180)';
+        function appendNumber(num) {
+            display.value += num;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+                if(display.value === "143") { // Secret code
+                    document.querySelector('.overlay').style.display = 'block';
+                    document.querySelector('.video-container').style.display = 'block';
+                    player.playVideo();
+                }
+            } catch {
+                display.value = "Error!";
             }
-        });
+        }
     </script>
 </body>
 </html>

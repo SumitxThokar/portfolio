@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ Secret Calculator Proposal ✨</title>
+    <title>Ben 10 Calculator</title>
     <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         body {
@@ -12,30 +12,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #ffe6f0;
-            font-family: 'Comic Sans MS', cursive;
+            background: #0F0F0F;
+            font-family: 'Arial', sans-serif;
             overflow: hidden;
             padding-top: 50px;
+            color: #00FF00;
         }
 
         .construction-notice {
             font-size: 1.5em;
-            color: #ff69b4;
+            color: #00FF00;
             text-align: center;
             margin-bottom: 30px;
             padding: 15px;
-            background: white;
+            background: black;
             border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(255,105,180,0.2);
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
         }
 
         .calculator {
-            background: #fff;
+            background: #222;
             padding: 20px;
             border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
             width: 300px;
             margin-bottom: 30px;
+            border: 2px solid #00FF00;
         }
 
         #display {
@@ -44,10 +46,11 @@
             margin-bottom: 15px;
             text-align: right;
             font-size: 2em;
-            border: 3px solid #ffb3d9;
+            border: 3px solid #00FF00;
             border-radius: 15px;
             padding: 10px;
-            color: #ff69b4;
+            background: black;
+            color: #00FF00;
         }
 
         .buttons {
@@ -61,19 +64,21 @@
             font-size: 1.2em;
             border: none;
             border-radius: 15px;
-            background: #ffb3d9;
-            color: white;
+            background: #004400;
+            color: #00FF00;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         button:hover {
-            background: #ff69b4;
+            background: #00FF00;
+            color: black;
             transform: scale(1.05);
         }
 
         .equals {
-            background: #ff69b4;
+            background: #00FF00;
+            color: black;
             grid-column: span 2;
         }
 
@@ -105,7 +110,7 @@
 <body>
     <div class="construction-notice">
         🚧 Portfolio Under Construction 🚧<br>
-        (Solve the mystery equation to unlock it!)
+        "It's under construction. Will create it when I stop procrastinating or when hell cools—whichever comes first. Till then, enjoy the calculator, you tots."
     </div>
 
     <div class="calculator">
@@ -115,14 +120,18 @@
             <button onclick="appendNumber('7')">7</button>
             <button onclick="appendNumber('8')">8</button>
             <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('+')">+</button>
             <button onclick="appendNumber('4')">4</button>
             <button onclick="appendNumber('5')">5</button>
             <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('-')">-</button>
             <button onclick="appendNumber('1')">1</button>
             <button onclick="appendNumber('2')">2</button>
             <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendOperator('*')">*</button>
             <button onclick="appendNumber('0')">0</button>
             <button onclick="appendNumber('.')">.</button>
+            <button onclick="appendOperator('/')">/</button>
             <button onclick="calculate()" class="equals">=</button>
         </div>
     </div>
@@ -138,24 +147,14 @@
     </div>
 
     <script>
-        let player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('yt-player', {
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            event.target.unMute();
-            event.target.setVolume(100);
-        }
-
         let display = document.getElementById('display');
         
         function appendNumber(num) {
             display.value += num;
+        }
+
+        function appendOperator(op) {
+            display.value += op;
         }
 
         function clearDisplay() {
@@ -163,16 +162,8 @@
         }
 
         function calculate() {
-            try {
-                display.value = eval(display.value);
-                if(display.value === "143") { // Secret code
-                    document.querySelector('.overlay').style.display = 'block';
-                    document.querySelector('.video-container').style.display = 'block';
-                    player.playVideo();
-                }
-            } catch {
-                display.value = "Error!";
-            }
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.video-container').style.display = 'block';
         }
     </script>
 </body>

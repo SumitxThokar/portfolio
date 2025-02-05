@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ben 10 Calculator</title>
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <title>✨ Secret Calculator Proposal ✨</title>
     <style>
         body {
             margin: 0;
@@ -12,32 +11,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #0F0F0F;
-            font-family: 'Arial', sans-serif;
+            background: #ffe6f0;
+            font-family: 'Comic Sans MS', cursive;
             overflow: hidden;
             padding-top: 50px;
-            color: #00FF00;
         }
 
         .construction-notice {
             font-size: 1.5em;
-            color: #00FF00;
+            color: #ff69b4;
             text-align: center;
             margin-bottom: 30px;
             padding: 15px;
-            background: black;
+            background: white;
             border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(255,105,180,0.2);
         }
 
         .calculator {
-            background: #222;
+            background: #fff;
             padding: 20px;
             border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(255,105,180,0.3);
             width: 300px;
             margin-bottom: 30px;
-            border: 2px solid #00FF00;
         }
 
         #display {
@@ -46,11 +43,10 @@
             margin-bottom: 15px;
             text-align: right;
             font-size: 2em;
-            border: 3px solid #00FF00;
+            border: 3px solid #ffb3d9;
             border-radius: 15px;
             padding: 10px;
-            background: black;
-            color: #00FF00;
+            color: #ff69b4;
         }
 
         .buttons {
@@ -64,53 +60,27 @@
             font-size: 1.2em;
             border: none;
             border-radius: 15px;
-            background: #004400;
-            color: #00FF00;
+            background: #ffb3d9;
+            color: white;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         button:hover {
-            background: #00FF00;
-            color: black;
+            background: #ff69b4;
             transform: scale(1.05);
         }
 
         .equals {
-            background: #00FF00;
-            color: black;
+            background: #ff69b4;
             grid-column: span 2;
-        }
-
-        .video-container {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 50px rgba(0,0,0,0.2);
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 999;
         }
     </style>
 </head>
 <body>
     <div class="construction-notice">
         🚧 Portfolio Under Construction 🚧<br>
-        "It's under construction. Will create it when I stop procrastinating or when hell cools—whichever comes first. Till then, enjoy the calculator, you tots."
+        (Solve the mystery equation to unlock it!)
     </div>
 
     <div class="calculator">
@@ -136,16 +106,6 @@
         </div>
     </div>
 
-    <div class="overlay"></div>
-    <div class="video-container">
-        <iframe id="yt-player" 
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1&mute=1"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-        </iframe>
-    </div>
-
     <script>
         let display = document.getElementById('display');
         
@@ -162,8 +122,18 @@
         }
 
         function calculate() {
-            document.querySelector('.overlay').style.display = 'block';
-            document.querySelector('.video-container').style.display = 'block';
+            try {
+                // Evaluate the expression
+                const result = eval(display.value);
+                display.value = result;
+
+                // Redirect to the YouTube video (Rickroll) after a short delay
+                setTimeout(() => {
+                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                }, 500); // 0.5-second delay before redirecting
+            } catch {
+                display.value = "Error!";
+            }
         }
     </script>
 </body>

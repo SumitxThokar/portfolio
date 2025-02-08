@@ -3,184 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦸♂️ Omni-Calculator 🛸</title>
+    <title>🚧 Portfolio Under Construction 🚧</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&display=swap');
-        
         body {
             margin: 0;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: linear-gradient(135deg, #1a1a1a 0%, #003300 100%);
-            font-family: 'Orbitron', sans-serif;
             overflow: hidden;
-            padding-top: 30px;
-        }
-
-        .alien-alert {
-            font-size: 1.8em;
-            color: #00ff00;
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #00ff00;
-            border-radius: 15px;
-            text-shadow: 0 0 10px #00ff00;
-            box-shadow: 0 0 20px rgba(0,255,0,0.3);
-        }
-
-        .calculator {
             background: #000;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0,255,0,0.4);
-            width: 320px;
-            border: 2px solid #00ff00;
-            position: relative;
-            overflow: hidden;
+            color: #fff;
+            font-family: 'Comic Sans MS', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
-        .calculator::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, #00ff00, transparent);
-            animation: omni-glow 4s linear infinite;
-        }
-
-        @keyframes omni-glow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        #display {
-            width: 94%;
-            height: 70px;
-            margin-bottom: 20px;
-            text-align: right;
+        .construction-notice {
             font-size: 2.5em;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            padding: 10px;
-            background: #001a00;
-            color: #00ff00;
-            font-family: 'Press Start 2P', cursive;
-            text-shadow: 0 0 5px #00ff00;
+            color: #ff69b4;
+            text-shadow: 0 0 10px #ff69b4;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 20px;
         }
 
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+        .gif {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            animation: float linear infinite;
         }
 
-        button {
-            padding: 18px;
-            font-size: 1.3em;
-            border: none;
-            border-radius: 10px;
-            background: #003300;
-            color: #00ff00;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Orbitron', sans-serif;
-            text-shadow: 0 0 5px #00ff00;
-            border: 1px solid #00ff00;
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(200px, 150px) rotate(90deg); }
+            50% { transform: translate(-200px, 300px) rotate(180deg); }
+            75% { transform: translate(200px, 450px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
 
-        button:hover {
-            background: #006600;
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #00ff00;
-        }
-
-        .equals {
-            background: #ff5500;
-            color: #000;
-            text-shadow: none;
-        }
-
-        .equals:hover {
-            background: #ff8800;
-        }
-
-        @media (max-width: 480px) {
-            .calculator {
-                width: 90%;
-            }
-        }
+        .gif:nth-child(1) { animation-duration: 20s; top: 10%; left: 10%; }
+        .gif:nth-child(2) { animation-duration: 25s; top: 20%; left: 50%; }
+        .gif:nth-child(3) { animation-duration: 30s; top: 30%; left: 80%; }
+        .gif:nth-child(4) { animation-duration: 15s; top: 50%; left: 20%; }
+        .gif:nth-child(5) { animation-duration: 22s; top: 70%; left: 60%; }
     </style>
 </head>
 <body>
-    <div class="alien-alert">
-        🛸 Omnitrix Calculator Activated 🦸♂️<br>
-        [Enter Code Matrix to Access Portfolio]
+    <div class="construction-notice">
+        🚧 Portfolio Under Construction 🚧<br>
+        (Brainrot loading...)
     </div>
 
-    <div class="calculator">
-        <input type="text" id="display" readonly>
-        <div class="buttons">
-            <button onclick="clearDisplay()">C</button>
-            <button onclick="appendNumber('7')">7</button>
-            <button onclick="appendNumber('8')">8</button>
-            <button onclick="appendNumber('9')">9</button>
-            <button onclick="appendOperator('+')">+</button>
-            <button onclick="appendNumber('4')">4</button>
-            <button onclick="appendNumber('5')">5</button>
-            <button onclick="appendNumber('6')">6</button>
-            <button onclick="appendOperator('-')">-</button>
-            <button onclick="appendNumber('1')">1</button>
-            <button onclick="appendNumber('2')">2</button>
-            <button onclick="appendNumber('3')">3</button>
-            <button onclick="appendOperator('*')">×</button>
-            <button onclick="appendNumber('0')">0</button>
-            <button onclick="appendNumber('.')">.</button>
-            <button onclick="appendOperator('/')">÷</button>
-            <button onclick="calculate()" class="equals">=</button>
-        </div>
-    </div>
-
-    <script>
-        let display = document.getElementById('display');
-        
-        function appendNumber(num) {
-            display.value += num;
-        }
-
-        function appendOperator(op) {
-            display.value += op;
-        }
-
-        function clearDisplay() {
-            display.value = '';
-        }
-
-        function calculate() {
-            try {
-                const result = eval(display.value);
-                display.value = result;
-                
-                // Add alien transformation effect
-                document.body.style.background = `linear-gradient(135deg, #${Math.floor(Math.random()*16777215).toString(16)} 0%, #${Math.floor(Math.random()*16777215).toString(16)} 100%)`;
-                
-                setTimeout(() => {
-                    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-                }, 1000);
-            } catch {
-                display.value = "ERROR!";
-                display.style.color = "#ff0000";
-                setTimeout(() => {
-                    display.style.color = "#00ff00";
-                    clearDisplay();
-                }, 1000);
-            }
-        }
-    </script>
+    <!-- Random brainrot GIFs -->
+    <img src="https://media.giphy.com/media/3o7aTskHEUdgCQAXde/giphy.gif" class="gif" alt="Brainrot GIF 1">
+    <img src="https://media.giphy.com/media/l0HlTy9x8FZo0XO1i/giphy.gif" class="gif" alt="Brainrot GIF 2">
+    <img src="https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif" class="gif" alt="Brainrot GIF 3">
+    <img src="https://media.giphy.com/media/3o7TKsQ8UQ1iqvVWgU/giphy.gif" class="gif" alt="Brainrot GIF 4">
+    <img src="https://media.giphy.com/media/3o7TKsQ8UQ1iqvWgU/giphy.gif" class="gif" alt="Brainrot GIF 5">
 </body>
 </html>
